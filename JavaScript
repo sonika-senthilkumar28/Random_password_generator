@@ -1,0 +1,39 @@
+
+function password(length,includeUppercase,includeLowercase,includeNumber,includeSymbol){
+    allowedchar = "";
+    password = "";
+
+    const lower = "abcdeghijklmnpqrstuvwxyz";
+    const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const number = "1234567890";
+    const symbol = "!@#$%^&*()_+-=";
+
+    allowedchar += includeUppercase?upper:"";
+    allowedchar += includeLowercase?lower:"";
+    allowedchar += includeNumber?number:"";
+    allowedchar += includeSymbol?symbol:"";
+
+    //console.log(allowedchar);
+    if(length<=0){
+        return "Your length must be greater than 1";
+    }
+    if(allowedchar.length === 0){
+        return "You must select any one";
+    }
+    for(let i=0;i<length;i++){
+        const randomindex = Math.floor(Math.random() * allowedchar.length);
+        password += allowedchar[randomindex];
+    }
+    return password;
+
+}
+
+const length = 8;
+const includeUppercase = true;
+const includeLowercase = true;
+const includeNumber = true;
+const includeSymbol = true;
+
+const final_password = password(length,includeUppercase,includeLowercase,includeNumber,includeSymbol)
+console.log("The Password generated is : "+final_password);
+
